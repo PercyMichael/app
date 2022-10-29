@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/bootstrap-5.2.2-dist/css/bootstrap.min.css" />
+    <style></style>
+  </head>
+  <body>
+    <header><%- include('../templates/header') %></header>
+    <main>
+      <h1>List Articles(<%= results.length %>)</h1>
+      <div>
+        <table class="table">
+          <thead><h5>Rooms</h5></thead>
+          <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>RENT</th>
+            <td>Actions</td>
+          </tr>
+          <% results.forEach((data)=>{ %>
+          
+          <tr>
+            <td><%=data.id%></td><td><%=data.unit_name%></td><td><%=data.monthly_rent%></td>
+            <td>
+              <a href="./edit/<%= data.id %>" >
+                <button class="btn btn-sm btn-outline-primary">Edit</button>
+              </a>
+              <a href="./delete/<%= data.id %>" >
+                <button class="btn btn-sm btn-outline-danger">Delete</button>
+             </a>
+            </td>
+          </tr>
+          
+          <% }) %>
+        </table>
+        </ul>
+      </div>
+    </main>
+    <footer><%- include('../templates/footer') %></footer>
+  </body>
+</html>
