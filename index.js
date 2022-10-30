@@ -41,9 +41,27 @@ app.get('/edit/:id', (req, res,next) => {
     const sql = 'SELECT id,unit_name,monthly_rent FROM rooms WHERE id = ?';
     db.query(sql,[id],(err,result,fields)=> {
         if (err) throw err;
-        console.log(result.length + ' got '+fields);
+        console.log(result.length + ' got to update',result[0].unit_name);
         
-        res.render('pages/edit',{room:fields})
+        res.render('pages/edit',{data:result})
+});
+
+})
+
+
+app.get('/single-view/:id', (req, res,next) => {
+    const id = req.params.id;
+    const sql = 'SELECT id,unit_name,monthly_rent FROM rooms WHERE id = ?';
+    db.query(sql,[id],(err,result,fields)=> {
+        if (err) {
+            throw err;
+        }
+        else {
+            console.log(result);
+            
+            res.render('pages/single-view',{data:result})
+        }
+        
 });
 
 })
@@ -66,4 +84,6 @@ app.get('/new',(req,res)=> {
 
 
 
-    app.listen('3000');
+app.listen('3000', () => {
+        console.log('locoalhost:3000');
+    });

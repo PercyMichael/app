@@ -4,21 +4,27 @@
     <link rel="stylesheet" href="/bootstrap-5.2.2-dist/css/bootstrap.min.css" />
   </head>
   <body>
+    <% data.forEach(data=>{%>
     <h1 class="m-3">
-      <%= room.id %> - <span class="text-muted h6">Edit</span>
+      <%= data.unit_name %> - <span class="text-muted h6">Edit</span>
     </h1>
-    <form class="form">
+    <form class="form" action="edit-single/<%= data.id %>">
       <div class="form-group m-3">
         <label>Unt name</label>
-        <input class="form-control" type="text" />
+        <input class="form-control" type="text" value="<%= data.unit_name %>" />
       </div>
 
       <div class="form-group m-3">
         <label>Monthly rent</label>
-        <input class="form-control" type="number" />
+        <input
+          class="form-control"
+          type="number"
+          value="<%=data.monthly_rent %>"
+        />
       </div>
 
-      <button class="btn btn-success">Submit</button>
+      <button class="btn btn-success m-3">Submit</button>
     </form>
+    <% }) %>
   </body>
 </html>
