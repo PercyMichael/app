@@ -103,6 +103,21 @@ app.get('/new',(req,res)=> {
     res.render('pages/new');
 })
 
+app.post('/new', (req, res) => {
+    const unit_name = req.body.unit_name;
+    const monthly_rent = req.body.monthly_rent;
+    const sql = `INSERT INTO rooms (unit_name,monthly_rent) VALUES ("${unit_name}","${monthly_rent}")`;
+    db.query(sql, (err,result) => {
+        if (err) {
+            throw err;
+            console.log()
+        } else {
+            console.log('added ',result.affectedRows);
+            res.redirect('/');
+        }
+    });
+})
+
 
 
 app.listen('3000', () => {
