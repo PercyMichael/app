@@ -8,15 +8,21 @@
     <h1 class="m-3">
       <%= data.unit_name %> - <span class="text-muted h6">Edit</span>
     </h1>
-    <form class="form" action="edit-single/<%= data.id %>">
+    <form class="form" action="/edit-single/<%= data.id %>" method="post">
       <div class="form-group m-3">
-        <label>Unt name</label>
-        <input class="form-control" type="text" value="<%= data.unit_name %>" />
+        <label>Unit name</label>
+        <input
+          name="unit_name"
+          class="form-control"
+          type="text"
+          value="<%= data.unit_name %>"
+        />
       </div>
 
       <div class="form-group m-3">
         <label>Monthly rent</label>
         <input
+          name="monthly_rent"
           class="form-control"
           type="number"
           value="<%=data.monthly_rent %>"
